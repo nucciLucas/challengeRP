@@ -1,0 +1,957 @@
+{
+	"info": {
+		"_postman_id": "d77bcd01-f01c-4998-9115-300ae42287fd",
+		"name": "recargaPay Challenge LucasNucci",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21085009"
+	},
+	"item": [
+		{
+			"name": "Create environment variables",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Response Code\r",
+							"pm.test(\"Successful GET request\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//Response Header test\r",
+							"pm.test(\"Header Response Test\", function () {\r",
+							"    let count = 0;\r",
+							"    try{pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json; charset=utf-8');}catch(e){pm.test(\"Content-Type Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get('Connection')).to.eql('keep-alive');}catch(e){pm.test(\"Connection Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get('X-Powered-By')).to.eql('Express');}catch(e){pm.test(\"X-Powered-By Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get('Vary')).to.eql('Origin, Accept-Encoding');}catch(e){pm.test(\"Vary Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Access-Control-Allow-Credentials')).to.eql('true');}catch(e){pm.test(\"Access-Control-Allow-Credentials Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Cache-Control')).to.eql('max-age=43200');}catch(e){pm.test(\"Cache-Control Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Pragma')).to.eql('no-cache');}catch(e){pm.test(\"Pragma Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Expires')).to.eql('-1');}catch(e){pm.test(\"Expires Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('X-Content-Type-Options')).to.eql('nosniff');}catch(e){pm.test(\"X-Content-Type-Options Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Via')).to.eql('1.1 vegur');}catch(e){pm.test(\"Via Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('CF-Cache-Status')).to.eql('HIT');}catch(e){pm.test(\"CF-Cache-Status Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Expect-CT')).to.eql('max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"');}catch(e){pm.test(\"Expect-CT Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('NEL')).to.eql('{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}');}catch(e){pm.test(\"NEL Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Server')).to.eql('cloudflare');}catch(e){pm.test(\"Server Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('alt-svc')).to.eql('h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400');}catch(e){pm.test(\"alt-svc Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"\ttry{pm.expect(pm.response.headers.get('Content-Encoding')).to.eql('br');}catch(e){pm.test(\"Content-Encoding Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"\r",
+							"    if(count > 0) {\r",
+							"        pm.expect.fail(\"There are \" + count + \" failures within the above checks, please check...\")\r",
+							"    }\r",
+							"\r",
+							"});\r",
+							"\r",
+							"const resp = pm.response.json();\r",
+							"\r",
+							"    for (var i = 0; i < resp.length; i++){\r",
+							"        pm.environment.set(\"body\"+i,resp[i].body);\r",
+							"        pm.environment.set(\"title\"+i,resp[i].title);\r",
+							"    }\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{servidor}}/posts",
+					"host": [
+						"{{servidor}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Tests",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Response Code\r",
+							"pm.test(\"Successful GET request\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//Response Header test\r",
+							"pm.test(\"Header Response Test\", function () {\r",
+							"    let count = 0;\r",
+							"    try{pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json; charset=utf-8');}catch(e){pm.test(\"Content-Type Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get('Connection')).to.eql('keep-alive');}catch(e){pm.test(\"Connection Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get('X-Powered-By')).to.eql('Express');}catch(e){pm.test(\"X-Powered-By Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get('Vary')).to.eql('Origin, Accept-Encoding');}catch(e){pm.test(\"Vary Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Access-Control-Allow-Credentials')).to.eql('true');}catch(e){pm.test(\"Access-Control-Allow-Credentials Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Cache-Control')).to.eql('max-age=43200');}catch(e){pm.test(\"Cache-Control Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Pragma')).to.eql('no-cache');}catch(e){pm.test(\"Pragma Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Expires')).to.eql('-1');}catch(e){pm.test(\"Expires Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('X-Content-Type-Options')).to.eql('nosniff');}catch(e){pm.test(\"X-Content-Type-Options Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Via')).to.eql('1.1 vegur');}catch(e){pm.test(\"Via Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('CF-Cache-Status')).to.eql('HIT');}catch(e){pm.test(\"CF-Cache-Status Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Expect-CT')).to.eql('max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"');}catch(e){pm.test(\"Expect-CT Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('NEL')).to.eql('{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}');}catch(e){pm.test(\"NEL Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Server')).to.eql('cloudflare');}catch(e){pm.test(\"Server Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('alt-svc')).to.eql('h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400');}catch(e){pm.test(\"alt-svc Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"\ttry{pm.expect(pm.response.headers.get('Content-Encoding')).to.eql('br');}catch(e){pm.test(\"Content-Encoding Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"\r",
+							"    if(count > 0) {\r",
+							"        pm.expect.fail(\"There are \" + count + \" failures within the above checks, please check...\")\r",
+							"    }\r",
+							"\r",
+							"});\r",
+							"\r",
+							"const resp = pm.response.json();\r",
+							"\r",
+							"//simple body test\r",
+							"pm.test(\"Test Case 001 - Strings not undefined\", function () {\r",
+							"    let count=0;\r",
+							"    for (var i = 0; i < resp.length; i++){\r",
+							"        try{\r",
+							"            pm.expect(resp[i].body).not.eql(undefined);\r",
+							"            }catch(e){\r",
+							"                pm.test(\"Object id: \"+i+\" 'body' Failed\", () => {throw new Error(e.message)});\r",
+							"                count+=1;\r",
+							"            }\r",
+							"        try{          \r",
+							"            pm.expect(resp[i].title).not.eql(undefined);\r",
+							"            }catch(e){\r",
+							"                pm.test(\"Object id: \"+i+\" title Failed\", () => {throw new Error(e.message)});\r",
+							"                count+=1;\r",
+							"                }\r",
+							"        try{\r",
+							"            const nID = Math.ceil(resp[i].id/10);\r",
+							"            pm.expect(resp[i].userId).to.eql(nID);\r",
+							"        }catch(e){\r",
+							"            pm.test(\"Object id: \"+i+\" Failed\", () => {throw new Error(e.message)});\r",
+							"            count+=1;\r",
+							"        }\r",
+							"    }\r",
+							"    if(count > 0) {\r",
+							"        pm.expect.fail(\"There are \" + count + \" failures within the above checks, please check...\");\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"//TC 002 check if value is equal environment\r",
+							"pm.test(\"Test Case 002 - String match\", function () {\r",
+							"    let count=0;\r",
+							"    for (var i = 0; i < resp.length; i++){\r",
+							"        try{\r",
+							"            pm.expect(resp[i].body).to.eql(pm.environment.get(\"body\"+i));\r",
+							"            }catch(e){\r",
+							"                pm.test(\"Object id: \"+i+\" 'body' Failed\", () => {throw new Error(e.message)});\r",
+							"                count+=1;\r",
+							"                }\r",
+							"        try{    \r",
+							"            pm.expect(resp[i].title).to.eql(pm.environment.get(\"title\"+i));\r",
+							"            }catch(e){\r",
+							"                pm.test(\"Object id: \"+i+\" title Failed\", () => {throw new Error(e.message)});\r",
+							"                count+=1;\r",
+							"                }\r",
+							"                \r",
+							"        try{ \r",
+							"            const nID = Math.ceil(resp[i].id/10);\r",
+							"            pm.expect(resp[i].userId).to.eql(nID);\r",
+							"        }catch(e){pm.test(\"Object id: \"+i+\" Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    }\r",
+							"    if(count > 0) {\r",
+							"        pm.expect.fail(\"There are \" + count + \" failures within the above checks, please check...\");\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"//random to ensure the code works\r",
+							"const randomTest = Math.floor(Math.random()*(resp.length+1));\r",
+							"\r",
+							"//save environment variables to another variable\r",
+							"const textoCorpo = pm.environment.get(\"body\"+randomTest);\r",
+							"const textoTitulo = pm.environment.get(\"title\"+randomTest);\r",
+							"\r",
+							"//set to undefined to provoke the error\r",
+							"pm.environment.set(\"body\"+randomTest,undefined);\r",
+							"pm.environment.set(\"title\"+randomTest,undefined);\r",
+							"\r",
+							"//TC 003 - Check if an Object fails\r",
+							"pm.test(\"Test Case 003 - Random id fail\", function () {\r",
+							"    let count=0;\r",
+							"    for (var i = 0; i < resp.length; i++){\r",
+							"        try{\r",
+							"            pm.expect(resp[i].body).to.eql(pm.environment.get(\"body\"+i));\r",
+							"            }catch(e){\r",
+							"                pm.test(\"Object id: \"+i+\" 'body' Failed\", () => {throw new Error(e.message)});\r",
+							"                count+=1;\r",
+							"                }\r",
+							"        try{    \r",
+							"            pm.expect(resp[i].title).to.eql(pm.environment.get(\"title\"+i));\r",
+							"            }catch(e){\r",
+							"                pm.test(\"Object id: \"+i+\" title Failed\", () => {throw new Error(e.message)});\r",
+							"                count+=1;\r",
+							"                }\r",
+							"\r",
+							"        try{ \r",
+							"            const nID = Math.ceil(resp[i].id/10);\r",
+							"            pm.expect(resp[i].userId).to.eql(nID);\r",
+							"        }catch(e){pm.test(\"Object id: \"+i+\" Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    }\r",
+							"    if(count > 0) {\r",
+							"        pm.expect.fail(\"There are \" + count + \" failures within the above checks, please check...\");\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"//set environmnent variables back\r",
+							"pm.environment.set(\"body\"+randomTest,textoCorpo);\r",
+							"pm.environment.set(\"title\"+randomTest,textoTitulo);\r",
+							"\r",
+							"\r",
+							"//create global variable for idNovo for POST tests\r",
+							"const idN = Math.ceil((resp.length+1)/10);\r",
+							"pm.globals.set(\"idNovo\", idN);\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{servidor}}/posts",
+					"host": [
+						"{{servidor}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Error Code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Response Code\r",
+							"pm.test(\"Successful GET request\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Error 404 to GET request\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{servidor}}/posts/foo",
+					"host": [
+						"{{servidor}}"
+					],
+					"path": [
+						"posts",
+						"foo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Test Case 001",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//TEST CASE 001 - Tudo OK\r",
+							"const resp = pm.response.json();\r",
+							"\r",
+							"//Code response Test\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+							"});\r",
+							"\r",
+							"//Response Header test\r",
+							"pm.test(\"Header Response Test\", function () {\r",
+							"    let count = 0;\r",
+							"    try{pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json; charset=utf-8');}catch(e){pm.test(\"Content-Type Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get(\"Location\")).to.eql('http://jsonplaceholder.typicode.com/posts/'+resp.id);}catch(e){pm.test(\"Location Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get('Content-Length')).to.eql('67');}catch(e){pm.test(\"Content-Length Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get('Connection')).to.eql('keep-alive');}catch(e){pm.test(\"Connection Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get('X-Powered-By')).to.eql('Express');}catch(e){pm.test(\"X-Powered-By Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get('Vary')).to.eql('Origin, X-HTTP-Method-Override, Accept-Encoding');}catch(e){pm.test(\"Vary Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Access-Control-Allow-Credentials')).to.eql('true');}catch(e){pm.test(\"Access-Control-Allow-Credentials Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Cache-Control')).to.eql('no-cache');}catch(e){pm.test(\"Cache-Control Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Pragma')).to.eql('no-cache');}catch(e){pm.test(\"Pragma Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Expires')).to.eql('-1');}catch(e){pm.test(\"Expires Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Access-Control-Expose-Headers')).to.eql('Location');}catch(e){pm.test(\"Access-Control-Expose-Headers Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('X-Content-Type-Options')).to.eql('nosniff');}catch(e){pm.test(\"X-Content-Type-Options Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Via')).to.eql('1.1 vegur');}catch(e){pm.test(\"Via Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('CF-Cache-Status')).to.eql('DYNAMIC');}catch(e){pm.test(\"CF-Cache-Status Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Expect-CT')).to.eql('max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"');}catch(e){pm.test(\"Expect-CT Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('NEL')).to.eql('{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}');}catch(e){pm.test(\"NEL Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Server')).to.eql('cloudflare');}catch(e){pm.test(\"Server Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('alt-svc')).to.eql('h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400');}catch(e){pm.test(\"alt-svc Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"\r",
+							"    if(count > 0) {\r",
+							"        pm.expect.fail(\"There are \" + count + \" failures within the above checks, please check...\")\r",
+							"    }\r",
+							"\r",
+							"});\r",
+							"//Body response Test\r",
+							"pm.test(\"Body matches string 'Novo'\", function () {\r",
+							"   pm.expect(resp.body).to.eql(\"Novo\");\r",
+							"});\r",
+							"pm.test(\"Title matches string 'New'\", function () {\r",
+							"   pm.expect(resp.title).to.eql(\"New\");\r",
+							"});\r",
+							"pm.test(\"userId matches\", function () {\r",
+							"    const nID = Math.ceil(resp.id/10);\r",
+							"    pm.expect(resp.userId).to.eql(nID);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"idNovo\", 11);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"New\",\r\n    \"body\": \"Novo\",\r\n    \"userId\": {{idNovo}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{servidor}}/posts",
+					"host": [
+						"{{servidor}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Test Case 002",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//TEST CASE 002 - Title erro\r",
+							"const resp = pm.response.json();\r",
+							"\r",
+							"//Code response Test\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+							"});\r",
+							"\r",
+							"//Response Header test\r",
+							"pm.test(\"Header Response Test\", function () {\r",
+							"    let count = 0;\r",
+							"    try{pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json; charset=utf-8');}catch(e){pm.test(\"Content-Type Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get(\"Location\")).to.eql('http://jsonplaceholder.typicode.com/posts/'+resp.id);}catch(e){pm.test(\"Location Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get('Content-Length')).to.eql('67');}catch(e){pm.test(\"Content-Length Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get('Connection')).to.eql('keep-alive');}catch(e){pm.test(\"Connection Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get('X-Powered-By')).to.eql('Express');}catch(e){pm.test(\"X-Powered-By Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get('Vary')).to.eql('Origin, X-HTTP-Method-Override, Accept-Encoding');}catch(e){pm.test(\"Vary Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Access-Control-Allow-Credentials')).to.eql('true');}catch(e){pm.test(\"Access-Control-Allow-Credentials Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Cache-Control')).to.eql('no-cache');}catch(e){pm.test(\"Cache-Control Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Pragma')).to.eql('no-cache');}catch(e){pm.test(\"Pragma Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Expires')).to.eql('-1');}catch(e){pm.test(\"Expires Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Access-Control-Expose-Headers')).to.eql('Location');}catch(e){pm.test(\"Access-Control-Expose-Headers Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('X-Content-Type-Options')).to.eql('nosniff');}catch(e){pm.test(\"X-Content-Type-Options Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Via')).to.eql('1.1 vegur');}catch(e){pm.test(\"Via Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('CF-Cache-Status')).to.eql('DYNAMIC');}catch(e){pm.test(\"CF-Cache-Status Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Expect-CT')).to.eql('max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"');}catch(e){pm.test(\"Expect-CT Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('NEL')).to.eql('{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}');}catch(e){pm.test(\"NEL Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Server')).to.eql('cloudflare');}catch(e){pm.test(\"Server Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('alt-svc')).to.eql('h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400');}catch(e){pm.test(\"alt-svc Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"\r",
+							"    if(count > 0) {\r",
+							"        pm.expect.fail(\"There are \" + count + \" failures within the above checks, please check...\")\r",
+							"    }\r",
+							"\r",
+							"});\r",
+							"//Body response Test\r",
+							"pm.test(\"Body matches string 'Novo'\", function () {\r",
+							"   pm.expect(resp.body).to.eql(\"Novo\");\r",
+							"});\r",
+							"pm.test(\"Title matches string 'New'\", function () { //expect to fail\r",
+							"   pm.expect(resp.title).to.eql(\"New\");\r",
+							"});\r",
+							"pm.test(\"userId matches\", function () {\r",
+							"    const nID = Math.ceil(resp.id/10);\r",
+							"    pm.expect(resp.userId).to.eql(nID);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"idNovo\", 11);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Newa\",\r\n    \"body\": \"Novo\",\r\n    \"userId\": {{idNovo}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{servidor}}/posts",
+					"host": [
+						"{{servidor}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Test Case 003",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//TEST CASE 003 - Body Erro\r",
+							"const resp = pm.response.json();\r",
+							"\r",
+							"//Code response Test\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+							"});\r",
+							"\r",
+							"//Response Header test\r",
+							"pm.test(\"Header Response Test\", function () {\r",
+							"    let count = 0;\r",
+							"    try{pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json; charset=utf-8');}catch(e){pm.test(\"Content-Type Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get(\"Location\")).to.eql('http://jsonplaceholder.typicode.com/posts/'+resp.id);}catch(e){pm.test(\"Location Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get('Content-Length')).to.eql('67');}catch(e){pm.test(\"Content-Length Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get('Connection')).to.eql('keep-alive');}catch(e){pm.test(\"Connection Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get('X-Powered-By')).to.eql('Express');}catch(e){pm.test(\"X-Powered-By Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get('Vary')).to.eql('Origin, X-HTTP-Method-Override, Accept-Encoding');}catch(e){pm.test(\"Vary Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Access-Control-Allow-Credentials')).to.eql('true');}catch(e){pm.test(\"Access-Control-Allow-Credentials Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Cache-Control')).to.eql('no-cache');}catch(e){pm.test(\"Cache-Control Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Pragma')).to.eql('no-cache');}catch(e){pm.test(\"Pragma Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Expires')).to.eql('-1');}catch(e){pm.test(\"Expires Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Access-Control-Expose-Headers')).to.eql('Location');}catch(e){pm.test(\"Access-Control-Expose-Headers Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('X-Content-Type-Options')).to.eql('nosniff');}catch(e){pm.test(\"X-Content-Type-Options Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Via')).to.eql('1.1 vegur');}catch(e){pm.test(\"Via Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('CF-Cache-Status')).to.eql('DYNAMIC');}catch(e){pm.test(\"CF-Cache-Status Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Expect-CT')).to.eql('max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"');}catch(e){pm.test(\"Expect-CT Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('NEL')).to.eql('{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}');}catch(e){pm.test(\"NEL Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Server')).to.eql('cloudflare');}catch(e){pm.test(\"Server Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('alt-svc')).to.eql('h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400');}catch(e){pm.test(\"alt-svc Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"\r",
+							"    if(count > 0) {\r",
+							"        pm.expect.fail(\"There are \" + count + \" failures within the above checks, please check...\")\r",
+							"    }\r",
+							"\r",
+							"});\r",
+							"//Body response Test\r",
+							"pm.test(\"Body matches string 'Novo'\", function () {\r",
+							"   pm.expect(resp.body).to.eql(\"Novo\");\r",
+							"});\r",
+							"pm.test(\"Title matches string 'New'\", function () {\r",
+							"   pm.expect(resp.title).to.eql(\"New\");\r",
+							"});\r",
+							"pm.test(\"userId matches\", function () {\r",
+							"    const nID = Math.ceil(resp.id/10);\r",
+							"    pm.expect(resp.userId).to.eql(nID);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"idNovo\", 11);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"New\",\r\n    \"userId\": {{idNovo}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{servidor}}/posts",
+					"host": [
+						"{{servidor}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Test Case 004",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//TEST CASE 004 - UserID erro\r",
+							"const resp = pm.response.json();\r",
+							"\r",
+							"//Code response Test\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+							"});\r",
+							"\r",
+							"//Response Header test\r",
+							"pm.test(\"Header Response Test\", function () {\r",
+							"    let count = 0;\r",
+							"    try{pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json; charset=utf-8');}catch(e){pm.test(\"Content-Type Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get(\"Location\")).to.eql('http://jsonplaceholder.typicode.com/posts/'+resp.id);}catch(e){pm.test(\"Location Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get('Content-Length')).to.eql('67');}catch(e){pm.test(\"Content-Length Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get('Connection')).to.eql('keep-alive');}catch(e){pm.test(\"Connection Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get('X-Powered-By')).to.eql('Express');}catch(e){pm.test(\"X-Powered-By Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"      }\r",
+							"    try{pm.expect(pm.response.headers.get('Vary')).to.eql('Origin, X-HTTP-Method-Override, Accept-Encoding');}catch(e){pm.test(\"Vary Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Access-Control-Allow-Credentials')).to.eql('true');}catch(e){pm.test(\"Access-Control-Allow-Credentials Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Cache-Control')).to.eql('no-cache');}catch(e){pm.test(\"Cache-Control Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Pragma')).to.eql('no-cache');}catch(e){pm.test(\"Pragma Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Expires')).to.eql('-1');}catch(e){pm.test(\"Expires Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Access-Control-Expose-Headers')).to.eql('Location');}catch(e){pm.test(\"Access-Control-Expose-Headers Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('X-Content-Type-Options')).to.eql('nosniff');}catch(e){pm.test(\"X-Content-Type-Options Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Via')).to.eql('1.1 vegur');}catch(e){pm.test(\"Via Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('CF-Cache-Status')).to.eql('DYNAMIC');}catch(e){pm.test(\"CF-Cache-Status Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Expect-CT')).to.eql('max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"');}catch(e){pm.test(\"Expect-CT Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('NEL')).to.eql('{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}');}catch(e){pm.test(\"NEL Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('Server')).to.eql('cloudflare');}catch(e){pm.test(\"Server Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"    try{pm.expect(pm.response.headers.get('alt-svc')).to.eql('h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400');}catch(e){pm.test(\"alt-svc Failed\", () => {throw new Error(e.message)});\r",
+							"        count+=1;\r",
+							"        }\r",
+							"\r",
+							"    if(count > 0) {\r",
+							"        pm.expect.fail(\"There are \" + count + \" failures within the above checks, please check...\")\r",
+							"    }\r",
+							"\r",
+							"});\r",
+							"//Body response Test\r",
+							"pm.test(\"Body matches string 'Novo'\", function () {\r",
+							"   pm.expect(resp.body).to.eql(\"Novo\");\r",
+							"});\r",
+							"pm.test(\"Title matches string 'New'\", function () {\r",
+							"   pm.expect(resp.title).to.eql(\"New\");\r",
+							"});\r",
+							"pm.test(\"userId matches\", function () {\r",
+							"    const nID = Math.ceil(resp.id/10);\r",
+							"    pm.expect(resp.userId).to.eql(nID);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"idNovo\", 12);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"New\",\r\n    \"body\": \"Novo\",\r\n    \"userId\": {{idNovo}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{servidor}}/posts",
+					"host": [
+						"{{servidor}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Test Case 005",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//TEST CASE 005 - Code Error\r",
+							"const resp = pm.response.json();\r",
+							"\r",
+							"//Code response Test\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Error 404 to POST request\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"idNovo\", 11);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"New\",\r\n    \"body\": \"Novo\",\r\n    \"userId\": {{idNovo}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{servidor}}/posts/foo",
+					"host": [
+						"{{servidor}}"
+					],
+					"path": [
+						"posts",
+						"foo"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "userId",
+			"value": ""
+		}
+	]
+}
